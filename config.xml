@@ -5,10 +5,10 @@
 		version = "1.0.0"
 		versionCode = "1">
 
-    <name>APPLICATION NAME</name>
+    <name>nomON</name>
 
     <description>
-        APPLICATION DESCRIPTION
+        NomON is a quirky new mobile app that makes ordering delivery food crazy easy. We take the decision cost out of picking what, where and when to eat - and add in a fun twist!
     </description>
 
     <author href="http://veneronslabs.wordpress.com" email="veneronslaboratories@gmail.com">
@@ -65,12 +65,12 @@
     <!-- <preference name="phonegap-version" value="2.2.0" /> versione di phonegap usata, se non specificata usa quella di default (l'ultima disponibile) -->
     <preference name="orientation" value="default" /> <!-- entrambe supportate -->
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" /> <!-- toglie la barra in alto su iOS e Android -->
+    <preference name="fullscreen" value="true" /> <!-- removes the bar high on iOS and Android -->
         
     <!-- iOS PREFERENCES -->
         
-    <preference name="webviewbounce" value="false" /> <!-- effetto bounce quando si raggiunge la cima o il fondo della pagina -->
-    <preference name="prerendered-icon" value="true" /> <!-- non applica effetto gloss all'icona -->
+    <preference name="webviewbounce" value="false" /> <!-- bounce effect when you reach the top or the bottom of the page -->
+    <preference name="prerendered-icon" value="true" /> <!-- does not apply to the icon gloss effect -->
     <preference name="stay-in-webview" value="false" /> <!-- if set to true, all links (even with target set to blank) will open in the app's webview -->
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="exit-on-suspend" value="true" /> <!-- if set to false, app will continue to run on suspend -->
