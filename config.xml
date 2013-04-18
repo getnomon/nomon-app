@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id = "it.venerons.nomON"
+		id = "com.RandomEats.nomON"
 		version = "0.1.0"
 		versionCode = "1">
 
     <name>nomON</name>
 
     <description>
-        NomON is a quirky new mobile app that makes ordering delivery food crazy easy. We take the decision cost out of picking what, where and when to eat - and add in a fun twist!
+        nomON is a quirky new mobile app that makes ordering delivery food crazy easy. We take the decision cost out of picking what, where and when to eat - and add in a fun twist!
     </description>
 
     <author href="https://getnomon.com" email="getnomon@gmail.com">
