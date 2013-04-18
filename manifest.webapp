@@ -1,0 +1,31 @@
+{
+    "name": "My App Name",
+    "description": "description of the app",
+    "version": "1",
+    "type": "web",
+    "csp": "allow 'self'; script-src 'self' ; style-src 'self';",
+    "launch_path": "/index.html",
+    "appcache_path": "/manifest.appcache",
+    "fullscreen": "false",
+    "icons": {
+        "16": "/icons/webapp/icon16.png",
+        "30": "/icons/webapp/icon30.png",
+        "32": "/icons/webapp/icon32.png",
+        "48": "/icons/webapp/icon48.png",
+        "60": "/icons/webapp/icon60.png",
+        "64": "/icons/webapp/icon64.png",
+        "128": "/icons/webapp/icon128.png",
+        "256": "/icons/webapp/icon256.png",
+        "512": "/icons/webapp/icon512.png"
+    },
+    "developer": {
+        "name": "Daniele Veneroni",
+        "url": "http://veneronslabs.wordpress.com/"
+    },
+    "default_locale": "en",
+    "locales": {
+      "it": {
+        "description": "Descrizione dell'applicazione"
+      }
+    }
+}
