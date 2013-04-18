@@ -2,6 +2,11 @@
 <html manifest="manifest.appcache"> 
 	<head> 
         <title>nomON</title> 
+
+        <link rel="stylesheet" href="assets/css/themes/default/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" href="assets/css/themes/default/jquery.mobile.structure-1.3.1.min.css" />
+        <script src="assets/js/jquery.js"></script> 
+        <script src="assets/js/jquery.mobile-1.3.1.min.js"></script> 
         
         <!-- WEB SEARCH META TAGS -->
         <meta charset="UTF-8">
@@ -28,24 +33,51 @@
         <link rel="apple-touch-startup-image" href="splash/ios/splash-1536x2008.jpg" media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" /> <!-- iPad retina Portrait 1536x2008 -->
         <link rel="apple-touch-startup-image" href="splash/ios/splash-1496x2048.jpg" media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" /> <!-- iPad retina Landscape 1496x2048 (yes, a portrait image but with content rotated 90 degrees - allows 40px for status bar) -->
             
-        <!-- ADD2HOME META TAGS -->
-        <script type="application/javascript" src="lib/add2home.js"></script>
-        <link rel="stylesheet" href="lib/add2home.css">
-        <script type="text/javascript">
-            var addToHomeConfig = {
-                animationIn: 'drop',
-                animationOut: 'fade',
-                startDelay: 1000,
-                lifespan: 5000,
-                expire: 2,
-                touchIcon:true,
-            };
-        </script>
-            
     </head> 
     <body> 
         
-        App Content
+        <section data-role="page" id="address-page">
+            <header data-role="header">
+                <h1>nomON</h1>
+            </header>
+            
+            <section data-role="content">
+                <form id="search-form">
+                    <p><input type="search" id="search" placeholder="Twitter"></p>
+                </form>
+                <ul id="results" data-role="listview"></ul>
+            </section>
+        </section>
+        
+        <section data-role="page" id="show-timeline" data-add-back-btn="true">
+            <header data-role="header">
+                <img id="avatar">
+                <h1></h1>
+                <h2></h2>
+            </header>
+            
+            <section data-role="content">
+                <ul id="user_stats">
+                    <li id="user_tweets">
+                        <strong></strong>
+                        <small>Tweets</small>
+                    </li>
+                    <li id="user_following">
+                        <strong></strong>
+                        <small>Following</small>
+                    </li>
+                    <li id="user_followers">
+                        <strong></strong>
+                        <small>Followers</small>
+                    </li>
+                    <li id="user_location">
+                        <strong></strong>
+                        <small>Location</small>
+                    </li>
+                </ul>
+                <ul id="timeline" data-role="listview" data-inset="true"></ul>
+            </section>
+        </section>
         
     </body>
 </html>
