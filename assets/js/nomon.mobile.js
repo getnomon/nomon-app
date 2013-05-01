@@ -53,7 +53,7 @@ $(function() {
                     unique_types.reverse();
                     console.log(unique_types);
                     $.each(unique_types, function(index, type){
-                        $('#rst-types').prepend($('<label>', {class:"checkbox"})
+                        $('#rst-types').append($('<label>', {class:"checkbox"})
                             .append($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                                 .append($('<span>', {text:type}))

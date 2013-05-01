@@ -40,17 +40,20 @@
 </head> 
 <body> 
 <!-- Address Page -->
-<section data-role="page" id="page-address">
-    <header data-role="header">
-        <h1>Enter Your Address</h1>
-    </header>
-    
+<section data-role="page" id="page-address">  
+    <div data-role="header">
+        <h1>Page Title</h1>
+        <a href="#page-settings" data-icon="gear" class="ui-btn-right">Options</a>
+    </div>
     <section data-role="content">
-        <p class="lead">We've got <a href="#" class="badge badge-important">29</a> happy Nommers so far...</p>
-        <div class="input-append" style="margin-bottom: 30px;">
-          <input class="input-xxlarge" placeholder="Address" id="address" type="text">
-          <button id="location" class="btn btn-inverse" type="button" style="height:40px"><!--<i class="icon-screenshot icon-white"></i>-->
-            <img src="/assets/img/geo.png" style="height: auto; width: 20px; position: relative; top: 2px;">
+        <p class="lead">We've got <span id="nom-count">##</span> happy Nommers so far...</p>
+        <div id="known-addresses" data-role="controlgroup">
+            <!-- Some kind of "loading" feedback -->
+            <a href="#page-price" data-value="0" data-role="button">4306 Thackeray Place NE</a>
+        </div>
+          <input class="input-xxlarge" placeholder="New Address..." id="address" type="text">
+          <button id="location" class="btn btn-inverse"><!--<i class="icon-screenshot icon-white"></i>-->
+            <img src="/assets/img/geo.png">
           </button>
         </div>
         <a id="getnomon" href="#page-price" data-role="button" data-transition="slide">Get Your Nom On</a>
@@ -61,6 +64,7 @@
 <section data-role="page" id="page-price" data-add-back-btn="true">
     <header data-role="header">
         <h1>Price Point</h1>
+        <a href="#page-settings" data-icon="gear" class="ui-btn-right">Options</a>
     </header>
     
     <section data-role="content">
@@ -79,50 +83,46 @@
 <section data-role="page" id="page-allergies" data-add-back-btn="true">
     <header data-role="header">
         <h1>Allergies? Special Requests?</h1>
+        <a href="#page-settings" data-icon="gear" class="ui-btn-right">Options</a>
     </header>
     
     <section data-role="content">
        <p class="lead">We've got you covered<small>*</small></p> 
 
-        <a href="#page-pay" data-role="button" data-transition="slide">I'll eat anything.</a>
-        <!-- Use section headder dropdown -->
+        <!--<a href="#page-pay" data-role="button" data-transition="slide">I'll eat anything.</a>-->
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
-            <div data-role="collapsible">
+            <div data-role="collapsible" id="restrictions">
                 <h3>Keep in mind...</h3>
-                    <div id="restrictions" class="form-narrow" action="#page-pay" style="display:none; margin-top: 10px;" method="post">
-                    <label><h4>I am a</h4></label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox1" name="restrictions" value="Vegetarian"> Vegetarian
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox3" name="restrictions" value="Vegan"> Vegan
-                    </label>
-                    <label><h4>I am allergic to</h4></label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox2" name="restrictions" value="Gluten"> Gluten
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox4" name="restrictions" value="Peanuts"> Peanuts
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox5" name="restrictions" value="Dairy"> Dairy
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox6" name="restrictions" value="Nut"> Nuts
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox7" name="restrictions" value="Fish/Shellfish"> Fish/Shellfish
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" id="Checkbox8" name="restrictions" value="Egg"> Eggs
-                    </label>
-                    <a href="#page-pay" class="btn btn-danger btn-large btn-block btn-primary" style="margin-top:10px">Feed me!</a>
-                </div>
+                <label><h4>I am a</h4></label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox1" name="restrictions" value="Vegetarian"> Vegetarian
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox3" name="restrictions" value="Vegan"> Vegan
+                </label>
+                <label><h4>I am allergic to</h4></label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox2" name="restrictions" value="Gluten"> Gluten
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox4" name="restrictions" value="Peanuts"> Peanuts
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox5" name="restrictions" value="Dairy"> Dairy
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox6" name="restrictions" value="Nut"> Nuts
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox7" name="restrictions" value="Fish/Shellfish"> Fish/Shellfish
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="Checkbox8" name="restrictions" value="Egg"> Eggs
+                </label>
+                <a href="#page-pay" class="btn btn-danger btn-large btn-block btn-primary" style="margin-top:10px">Feed me!</a>
             </div>
-            <div data-role="collapsible">
+            <div data-role="collapsible" id="rst-types">
                 <h3>I'm feeling picky</h3>
-                <div id="rst-types" class="form-narrow" action="#page-pay" style="display:none; margin-top: 10px;" method="post">
-                </div>
             </div>
         </div>        
         <a href="#page-pay" data-role="button" data-transition="slide">Let's do it!</a>
@@ -135,6 +135,7 @@
 <section data-role="page" id="page-pay" data-add-back-btn="true">
     <header data-role="header">
         <h1>One more thing!</h1>
+        <a href="#page-settings" data-icon="gear" class="ui-btn-right">Options</a>
     </header>
     
     <section data-role="content">
@@ -146,15 +147,30 @@
 <section data-role="page" id="page-review">
     <header data-role="header">
         <h1>Thanks!</h1>
+        <a href="#page-settings" data-icon="gear" class="ui-btn-right">Options</a>
     </header>
     
     <section data-role="content">
-        <h1>Did you like <strong><u id="restaurant">Jimmy Johns</u></strong></h1>
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="2" href="#rate">Loved it!</a>
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="1" href="#rate">Meh.</a>
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="0" href="#rate">Never again :(</a>
+        <h1>Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong></h1>
+        <div id="review" data-role="controlgroup">
+            <a href="#page-allergies" data-value="2" data-role="button">Loved it!</a>
+            <a href="#page-allergies" data-value="1" data-role="button">Meh.</a>
+            <a href="#page-allergies" data-value="0" data-role="button">Never again :(</a>
+        </div>
     </section>
 </section>
+
+<!-- Settings -->
+<div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page-settings" data-icon="gear">Settings</a></li>
+                <li><a href="#page-address" data-icon="star" class="ui-btn-active">New Order</a></li>
+                <li><a href="#page-history" data-icon="grid">History</a></li>
+                <li><a href="#" id="chat" data-icon="custom">Support</a></li>
+            </ul>
+        </div><!-- /navbar -->
+</div><!-- /footer -->
 
 </body>
 </html>
