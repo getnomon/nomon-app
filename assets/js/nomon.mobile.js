@@ -26,7 +26,7 @@ $(function() {
                 console.log(add_comp);
                 //make delivery request based on address
                 $.ajax(api('r'), {
-                    type : 'post',
+                    type : 'POST',
                     crossDomain: true,
                     dataType: "jsonp",
                     data: {
