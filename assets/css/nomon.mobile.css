@@ -8,10 +8,12 @@
 
 #location{
   float: right;
+  position: relative;
+  top: -40px;
+  right: 5px;
 }
 
 #location img{
   position: relative;
-  top: 5px;
   width:20px;
 }
