@@ -27,7 +27,7 @@ $(function() {
                 //make delivery request based on address
                 $.ajax(api('r'), {
                     type : 'post',
-                    dataType: "json",
+                    dataType: "jsonp",
                     data: {
                         func : 'dl',
                         addr : add_comp.street_number+" "+add_comp.route,
@@ -90,7 +90,7 @@ $(function() {
         //Authenticate user
         $.ajax(api('u'), {
             type : 'post',
-            dataType: "json",
+            dataType: "jsonp",
             data: {
                 func  : 'gacc',
                 email : $('#inputEmail').val(),
@@ -164,7 +164,7 @@ $(function() {
 });
 
 function api(type){
-    return '/api.php?api=' + type;
+    return 'https://getnomon.com/api.php?api=' + type + '&callback=?';
 }
 
 function validateEmail(emailAddress) {

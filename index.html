@@ -42,19 +42,23 @@
 <!-- Address Page -->
 <section data-role="page" id="page-address">  
     <div data-role="header">
-        <h1>Page Title</h1>
+        <h1>nomON</h1>
         <a href="#page-settings" data-icon="gear" class="ui-btn-left">Options</a>
     </div>
     <section data-role="content">
         <p class="lead">We've got <span id="nom-count">##</span> happy Nommers so far...</p>
-        <h3>Choose an address</h3>
-        <div id="known-addresses" data-role="controlgroup">
-            <!-- Some kind of "loading" feedback -->
-            <a href="#page-price" data-value="0" data-role="button">4306 Thackeray Place NE</a>
-        </div>
-        <h3>Or enter a new one</h3>
+        <!-- IF an address exists -->
+            <h3>Choose an address</h3>
+            <div id="known-addresses" data-role="controlgroup">
+                <!-- Some kind of "loading" feedback -->
+                <a href="#page-price" data-value="0" data-role="button">4306 Thackeray Place NE</a>
+            </div>
+            <h3>Or enter a new one</h3>
+            <!-- ELSE 
+            <h3>Emter a new address</h3> -->
+        <!-- ENDIF -->
         <input data-inline="true" placeholder="New Address..." id="address" type="text">
-        <div data-inline="true" id="location"><!--<i class="icon-screenshot icon-white"></i>-->
+        <div data-inline="true" id="location">
         <img id="geo-icon" src="/assets/img/geo.png">
         </div>
         </div>
@@ -65,13 +69,11 @@
 <!-- Price Point Selection-->
 <section data-role="page" id="page-price" data-add-back-btn="true">
     <header data-role="header">
-        <h1>Price Point</h1>
+        <h1>nomON</h1>
     </header>
     
     <section data-role="content">
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-value="15" href="#page-allergies" data-transition="slide">$15 - Hungry</a>
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-value="20" href="#page-allergies" data-transition="slide">$20 - Really Hungry</a>
-        <a class="btn btn-danger btn-large btn-block btn-primary" data-value="25" href="#page-allergies" data-transition="slide">$25 - I Could Eat a Horse</a>
+        <h1>Pick your price!</h1>
         <div id="pricepoint" data-role="controlgroup">
             <a href="#page-allergies" data-value="15" data-role="button">$15 - Hungry</a>
             <a href="#page-allergies" data-value="20" data-role="button">$20 - Really Hungry</a>
@@ -83,11 +85,12 @@
 <!-- Allergies + Requests -->
 <section data-role="page" id="page-allergies" data-add-back-btn="true">
     <header data-role="header">
-        <h1>Allergies? Special Requests?</h1>
+        <h1>nomON</h1>
     </header>
     
     <section data-role="content">
-       <p class="lead">We've got you covered<small>*</small></p> 
+        <h1>Allergies? Special Requests?</h1>
+        <p class="lead">We've got you covered<small>*</small></p> 
 
         <!--<a href="#page-pay" data-role="button" data-transition="slide">I'll eat anything.</a>-->
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
@@ -134,10 +137,11 @@
 <!-- Payment-->
 <section data-role="page" id="page-pay" data-add-back-btn="true">
     <header data-role="header">
-        <h1>One more thing!</h1>
+        <h1>nomON</h1>
     </header>
     
     <section data-role="content">
+        <h1>One more thing!</h1>
         <a href="#page-review" data-role="button" data-transition="slide">$ Pay $</a>
     </section>
 </section>
@@ -145,11 +149,12 @@
 <!-- Thanks -->
 <section data-role="page" id="page-review">
     <header data-role="header">
-        <h1>Thanks!</h1>
+        <h1>nomON</h1>
     </header>
     
     <section data-role="content">
-        <h1>Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong></h1>
+        <h1>Thanks!</h1>
+        <h2>Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong></h2>
         <div id="review" data-role="controlgroup">
             <a href="#page-allergies" data-value="2" data-role="button">Loved it!</a>
             <a href="#page-allergies" data-value="1" data-role="button">Meh.</a>
@@ -159,7 +164,7 @@
 </section>
 
 <!-- Settings -->
-<section data-role="page" id="page-review">
+<section data-role="page" id="page-settings">
     <header data-role="header">
         <h1>Settings</h1>
     </header>
