@@ -1,7 +1,7 @@
 {
-    "name": "My App Name",
+    "name": "nomON",
     "description": "description of the app",
-    "version": "1",
+    "version": "0.1.0",
     "type": "web",
     "csp": "allow 'self'; script-src 'self' ; style-src 'self';",
     "launch_path": "/index.html",
@@ -19,13 +19,13 @@
         "512": "/icons/webapp/icon512.png"
     },
     "developer": {
-        "name": "Daniele Veneroni",
-        "url": "http://veneronslabs.wordpress.com/"
+        "name": "Random Eats",
+        "url": "getnomon.com"
     },
     "default_locale": "en",
     "locales": {
       "it": {
-        "description": "Descrizione dell'applicazione"
+        "description": "Another description of the app (duplicate)"
       }
     }
 }
