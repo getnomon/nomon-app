@@ -65,6 +65,8 @@ $(function() {
                     $('#restaurant').text(randomRestaurant.na);
                 }).fail(function(jqXHR, textStatus, errorThrown){
                     alert('Could not find any restaurants for this location');
+                    console.log(textStatus);
+                    console.log(errorThrown);
                 });
             }).fail(function(jqXHR, textStatus, errorThrown){ 
                 alert('Could not validate address.'); 
