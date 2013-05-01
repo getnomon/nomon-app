@@ -12,67 +12,64 @@ $(function() {
     var add_comp = []; //address components
 	//Capture click/taps
 
-    $('a, .btn').not('#location, .external').on('click', function(){
-        buttonID = $(this).attr('id');
-        if(buttonID == "getnomon"){
-            if($('#address').val() == ""){
-                alert('Please enter your address');
-                return false;
-            }else{
-                $.get(geoValidate($('#address').val())).done(function(data) { 
-                    //got data, now what?
-                    //console.log(data.results);
-                    $.each(data.results[0].address_components, function(index, addr){
-                        add_comp[addr.types[0]] = addr.short_name;
-                    });
-                    console.log(add_comp);
-                    //make delivery request based on address
-                    $.ajax(api('r'), {
-                        type : 'post',
-                        dataType: "json",
-                        data: {
-                            func : 'dl',
-                            addr : add_comp.street_number+" "+add_comp.route,
-                            city : add_comp.locality,
-                            state: add_comp.administrative_area_level_1,
-                            zip  : add_comp.postal_code
-                        }
-                    }).done(function(result){
-                        console.log(result);
-                        //Inject the number of results into the headder
-                        //$('#rest-count').text(result.length);
-                        //console.log(result);
-
-                        /*begin jank type population*/
-                        types = [];
-                        $.each(result, function(index, rst){
-                            console.log(index);
-                            if(!(typeof rst.cu === 'undefined')){
-                                types.push(rst.cu[0]);
-                            }
-                        });
-                        unique_types = unique(types);
-                        unique_types.reverse();
-                        console.log(unique_types);
-                        $.each(unique_types, function(index, type){
-                            $('form#uber').prepend($('<label>', {class:"checkbox"})
-                                .append($('<input>', 
-                                {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                                    .append($('<span>', {text:type}))
-                            );
-                        });
-                        /*end jank type population*/
-                        randomRestaurant = result[Math.floor(Math.random()*result.length)];
-                        console.log('Random restaurant: '+randomRestaurant.na);
-                        $('#restaurant').text(randomRestaurant.na);
-                    }).fail(function(jqXHR, textStatus, errorThrown){
-                        alert('Could not find any restaurants for this location');
-                    });
-                }).fail(function(jqXHR, textStatus, errorThrown){ 
-                    alert('Could not validate address.'); 
-                    return false;
+    $('#getnomon').on('click', function(){
+        if($('#address').val() == ""){
+            alert('Please enter your address');
+            return false;
+        }else{
+            $.get(geoValidate($('#address').val())).done(function(data) { 
+                //got data, now what?
+                //console.log(data.results);
+                $.each(data.results[0].address_components, function(index, addr){
+                    add_comp[addr.types[0]] = addr.short_name;
                 });
-            }
+                console.log(add_comp);
+                //make delivery request based on address
+                $.ajax(api('r'), {
+                    type : 'post',
+                    dataType: "json",
+                    data: {
+                        func : 'dl',
+                        addr : add_comp.street_number+" "+add_comp.route,
+                        city : add_comp.locality,
+                        state: add_comp.administrative_area_level_1,
+                        zip  : add_comp.postal_code
+                    }
+                }).done(function(result){
+                    console.log(result);
+                    //Inject the number of results into the headder
+                    //$('#rest-count').text(result.length);
+                    //console.log(result);
+
+                    /*begin jank type population*/
+                    types = [];
+                    $.each(result, function(index, rst){
+                        console.log(index);
+                        if(!(typeof rst.cu === 'undefined')){
+                            types.push(rst.cu[0]);
+                        }
+                    });
+                    unique_types = unique(types);
+                    unique_types.reverse();
+                    console.log(unique_types);
+                    $.each(unique_types, function(index, type){
+                        $('form#uber').prepend($('<label>', {class:"checkbox"})
+                            .append($('<input>', 
+                            {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
+                                .append($('<span>', {text:type}))
+                        );
+                    });
+                    /*end jank type population*/
+                    randomRestaurant = result[Math.floor(Math.random()*result.length)];
+                    console.log('Random restaurant: '+randomRestaurant.na);
+                    $('#restaurant').text(randomRestaurant.na);
+                }).fail(function(jqXHR, textStatus, errorThrown){
+                    alert('Could not find any restaurants for this location');
+                });
+            }).fail(function(jqXHR, textStatus, errorThrown){ 
+                alert('Could not validate address.'); 
+                return false;
+            });
         }
 
         if(!(typeof $(this).attr('href') === 'undefined')){
