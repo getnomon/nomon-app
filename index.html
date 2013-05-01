@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="assets/css/themes/default/jquery.mobile.structure-1.3.1.min.css" />
     <script src="assets/js/jquery.js"></script> 
     <script src="assets/js/jquery.mobile-1.3.1.min.js"></script>
-    <script src="assets/js/nomon.mobile.js"></script>
     
     <!-- WEB SEARCH META TAGS -->
     <meta charset="UTF-8">
@@ -64,6 +63,80 @@
         <a class="btn btn-danger btn-large btn-block btn-primary" data-price="15" href="#page-allergies">$15 - Hungry</a>
         <a class="btn btn-danger btn-large btn-block btn-primary" data-price="20" href="#page-allergies">$20 - Really Hungry</a>
         <a class="btn btn-danger btn-large btn-block btn-primary" data-price="25" href="#page-allergies">$25 - I Could Eat a Horse</a>
+    </section>
+</section>
+
+<!-- Allergies + Requests -->
+<section data-role="page" id="page-allergies">
+    <header data-role="header">
+        <h1>Allergies? Special Requests?</h1>
+    </header>
+    
+    <section data-role="content">
+       <p class="lead">We've got you covered<small>*</small></p> 
+
+        <a class="btn btn-danger btn-large btn-block btn-primary" href="#page-pay">I'll eat anything.</a>
+        <button class="btn btn-danger btn-large btn-block btn-primary" onclick="document.getElementById('restrictions').style.display='block';">Keep in mind...</button>
+        <form id="restrictions" class="form-narrow" action="#page-pay" style="display:none; margin-top: 10px;" method="post">
+            <label><h4>I am a</h4></label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox1" name="restrictions" value="Vegetarian"> Vegetarian
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox3" name="restrictions" value="Vegan"> Vegan
+            </label>
+            <label><h4>I am allergic to</h4></label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox2" name="restrictions" value="Gluten"> Gluten
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox4" name="restrictions" value="Peanuts"> Peanuts
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox5" name="restrictions" value="Dairy"> Dairy
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox6" name="restrictions" value="Nut"> Nuts
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox7" name="restrictions" value="Fish/Shellfish"> Fish/Shellfish
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="Checkbox8" name="restrictions" value="Egg"> Eggs
+            </label>
+            <a href="#page-pay" class="btn btn-danger btn-large btn-block btn-primary" style="margin-top:10px">Feed me!</a>
+        </form>
+
+        <button class="btn btn-danger btn-large btn-block btn-primary" onclick="document.getElementById('uber').style.display='block';" style="margin-top: 5px;">I'm feeling picky...</button>
+        <form id="uber" class="form-narrow" action="#page-pay" style="display:none; margin-top: 10px;" method="post">
+            <a href="#page-pay" class="btn btn-danger btn-large btn-block btn-primary" style="margin-top:10px">Let's do it!</a>
+        </form>
+      <p style="margin-top:30px; line-height: 1em;"><small style="font-size:80%;">*nomON and ordr.in do not guarantee that the meal you receive will match your allergy preferences. The nomON algorithm selects and avoids items according to the ingredients that each restaurant lists on its menu. Thus, if a restaurant does not disclose the full ingredient list, there is no guarantee that your order will not include things you specified. We suggest only selecting certain categories of restaurants that will serve your needs, thoroughly inspecting foods when received, or refraining from ordering if your allergies are severe.</small></p>
+    </section>
+</section>
+
+<!-- Payment-->
+<section data-role="page" id="page-pay">
+    <header data-role="header">
+        <h1>One more thing!</h1>
+    </header>
+    
+    <section data-role="content">
+        <a class="btn btn-danger btn-large btn-block btn-primary" href="#page-review">$ Pay $</a>
+    </section>
+</section>
+
+<!-- Thanks -->
+<section data-role="page" id="page-review">
+    <header data-role="header">
+        <h1>Thanks!</h1>
+    </header>
+    
+    <section data-role="content">
+        <h1>Did you like <strong><u id="restaurant">Jimmy Johns</u></strong></h1>
+        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="2" href="#rate">Loved it!</a>
+        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="1" href="#rate">Meh.</a>
+        <a class="btn btn-danger btn-large btn-block btn-primary" data-rating="0" href="#rate">Never again :(</a>
     </section>
 </section>
 
