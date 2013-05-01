@@ -27,6 +27,7 @@ $(function() {
                 //make delivery request based on address
                 $.ajax(api('r'), {
                     type : 'post',
+                    crossDomain: true,
                     dataType: "jsonp",
                     data: {
                         func : 'dl',
