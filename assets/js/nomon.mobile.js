@@ -53,7 +53,7 @@ $(function() {
                     unique_types.reverse();
                     console.log(unique_types);
                     $.each(unique_types, function(index, type){
-                        $('form#uber').prepend($('<label>', {class:"checkbox"})
+                        $('#rst-types').prepend($('<label>', {class:"checkbox"})
                             .append($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                                 .append($('<span>', {text:type}))
@@ -120,11 +120,6 @@ $(function() {
 	$('#location').on('click', function(){
 		navigator.geolocation.getCurrentPosition(getLocation, getLocationFail, {enableHighAccuracy: true});
     });
-
-    if(pathname != '/' && pathname != '/test' && pathname != "/app"){
-        $('.masthead').css('height', '55px');
-        $('.mini-logo').css('display', 'inline-block');
-    }
 
     resizeTitle();
     $(window).resize(function() {
