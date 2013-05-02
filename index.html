@@ -155,7 +155,7 @@
 <section data-role="page" id="page-review">
     <header data-role="header">
         <h1>nomON</h1>
-        <a href="#page-settings" data-icon="gear" class="ui-btn-left">New Order</a>
+        <a href="#page-address" data-icon="plus" class="ui-btn-left">New Order</a>
     </header>
     
     <section data-role="content">
@@ -169,6 +169,18 @@
     </section>
 </section>
 
+
+<!-- Login -->
+<section data-role="page" id="page-login">
+    <header data-role="header">
+        <h1>Settings</h1>
+    </header>
+    
+    <section data-role="content">
+        <h1>These are the settings and shit</h1>
+    </section>
+</section>
+
 <!-- Settings -->
 <section data-role="page" id="page-settings">
     <header data-role="header">
@@ -176,7 +188,19 @@
     </header>
     
     <section data-role="content">
-        <h1>These are the settings and shit</h1>
+        <a class="btn btn-danger btn-large btn-block btn-primary" href="/thanks">Log Out</a>
+        <hr>
+        <form id="login-form">
+            <div data-role="fieldcontain">
+                <label for="textinput-fc">Username:</label>
+                <input type="text" id="inputEmail" placeholder="Email">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="textinput-fc">Password:</label>
+                <input type="password" id="inputPassword" placeholder="Password">
+            </div>
+          <button id="login">Log in</button>
+        </form>
     </section>
 </section>
 

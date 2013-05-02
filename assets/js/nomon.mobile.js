@@ -94,7 +94,7 @@ $(function() {
         //Authenticate user
         $.ajax(api('u'), {
             type : 'post',
-            dataType: "jsonp",
+            dataType: "json",
             data: {
                 func  : 'gacc',
                 email : $('#inputEmail').val(),
