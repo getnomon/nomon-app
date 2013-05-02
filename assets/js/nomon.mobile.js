@@ -76,7 +76,7 @@ $(function() {
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                         ).trigger("create"); /*might want to call */
                     });
-                    $('#rst-type-fieldset').trigger("create");
+                    $('#rst-types').trigger("create");
                     $('#rst-type-fieldset').collapsibleset('refresh');
 
                     /*end jank type population*/
