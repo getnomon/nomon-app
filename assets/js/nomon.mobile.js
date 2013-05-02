@@ -23,6 +23,7 @@ $(function() {
             //TODO: remove redundant validation on known address
             address = "";
             if($(this).hasClass('select-adderss')){
+                console.log('Selected address' + $(this).text());
                 address = $(this).text();
             }else{
                 address = $('#address').val();
