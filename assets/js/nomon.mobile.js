@@ -77,7 +77,7 @@ $(function() {
                         ).trigger("create"); /*might want to call */
                     });
                     //$('#rst-type-fieldset').trigger("create");
-                    //$('#rst-type-fieldset').collapsibleset('refresh');
+                    $('#rst-type-fieldset').collapsibleset('refresh');
 
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
