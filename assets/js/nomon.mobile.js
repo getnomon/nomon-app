@@ -63,13 +63,15 @@ $(function() {
                     });
                     unique_types = unique(types);
                     unique_types.reverse();
-                    console.log(unique_types);
+                    
+                    $('#rst-types').html('');
                     $.each(unique_types, function(index, type){
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                         );
                     });
+                    $('#rst-types').trigger("create");
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
                     console.log('Random restaurant: '+randomRestaurant.na);
