@@ -74,7 +74,7 @@ $(function() {
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                        ).trigger("create"); /*might want to call */
+                        )/*.trigger("create")*/; /*might want to call */
                     });
                     //$('#rst-types').trigger("create");
                     //$('#rst-type-fieldset').collapsibleset('refresh');
@@ -99,7 +99,7 @@ $(function() {
     });
 
     $('#rst-types-fieldset').on('click', function(){
-         $('#rst-types').collapsibleset('refresh');
+         $('#rst-types-fieldset').collapsibleset('refresh');
     });
 
     $('#getnomon').on('click', function(){
