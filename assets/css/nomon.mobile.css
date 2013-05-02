@@ -38,7 +38,7 @@ h1.title-front{
 .banner{
   text-align: center;
   max-width: 500px;
-  margin: auto;
+  margin: 10px auto 0;
 }
 
 .banner img{
