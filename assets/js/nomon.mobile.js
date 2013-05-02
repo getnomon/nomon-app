@@ -65,10 +65,9 @@ $(function() {
                     unique_types.reverse();
                     console.log(unique_types);
                     $.each(unique_types, function(index, type){
-                        $('#rst-types').append($('<label>', {class:"checkbox"})
-                            .append($('<input>', 
+                        $('#rst-types').append($('<label>', {class:"checkbox", text:type})
+                            .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                                .append($('<span>', {text:type}))
                         );
                     });
                     /*end jank type population*/
