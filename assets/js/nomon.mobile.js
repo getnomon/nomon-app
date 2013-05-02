@@ -13,11 +13,22 @@ $(function() {
 	//Capture click/taps
 
     $('#getnomon, .select-address').on('click', function(){
-        if($('#address').val() == ""){
+        if($(this).attr('id') == "getnomon" && $('#address').val() == ""){
             alert('Please enter your address');
             return false;
         }else{
-            $.get(geoValidate($('#address').val())).done(function(data) { 
+            //we dont really have to geo-validate the address because we already
+            //know it's valid. But for now let's just revalidate to keep
+            //it simple
+            //TODO: remove redundant validation on known address
+            address = "";
+            if($(this).hasClass('select-adderss')){
+                address = $(this).text();
+            }else{
+                address = $('#address').val();
+            }
+
+            $.get(geoValidate(address)).done(function(data) { 
                 //got data, now what?
                 //console.log(data.results);
                 $.each(data.results[0].address_components, function(index, addr){
