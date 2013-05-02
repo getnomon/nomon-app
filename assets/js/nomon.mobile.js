@@ -8,7 +8,7 @@
 
 $(function() {
     //enable cross domain pages
-    $.support.cors = tue;
+    $.support.cors = true;
 
 	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|webOS)/);
 	var pathname = $(location).attr('pathname');
