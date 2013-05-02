@@ -168,7 +168,7 @@ $(function() {
 });
 
 function api(type){
-    return 'https://getnomon.com/api.php?api=' + type + '&callback=?';
+    return 'https://getnomon.com/api.php?api=' + type;
 }
 
 function validateEmail(emailAddress) {
