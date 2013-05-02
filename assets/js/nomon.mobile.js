@@ -21,11 +21,8 @@ $(function() {
             //know it's valid. But for now let's just revalidate to keep
             //it simple
             //TODO: remove redundant validation on known address
-            console.log($(this));
-            console.log($(this).text());
             address = "";
-            if($(this).hasClass('select-adderss')){
-                console.log('Selected address' + $(this).text());
+            if($(this).hasClass('select-address')){
                 address = $(this).text();
             }else{
                 address = $('#address').val();
