@@ -36,7 +36,6 @@
     <link rel="apple-touch-startup-image" href="splash/ios/splash-748x1024.jpg" media="(device-width: 768px) and (orientation: landscape)" /> <!-- iPad Landscape 748x1024 (yes, a portrait image but with content rotated 90 degrees - allows 20px for status bar) -->
     <link rel="apple-touch-startup-image" href="splash/ios/splash-1536x2008.jpg" media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" /> <!-- iPad retina Portrait 1536x2008 -->
     <link rel="apple-touch-startup-image" href="splash/ios/splash-1496x2048.jpg" media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" /> <!-- iPad retina Landscape 1496x2048 (yes, a portrait image but with content rotated 90 degrees - allows 40px for status bar) -->
-        
 </head> 
 <body> 
 <!-- Address Page -->
@@ -47,11 +46,10 @@
     </div>
     <section data-role="content" id="front-page">
         <div id="motd">
-            <p class="lead">We've got <span id="nom-count">##</span> happy Nommers so far...</p>
         </div>
         <!-- IF an address exists -->
             <h3>Choose an address</h3>
-            <div id="known-addresses" data-role="controlgroup">
+            <div class="known-addresses" data-role="controlgroup">
                 <!-- Some kind of "loading" feedback -->
                 <a href="#page-price" class="select-address" data-value="0" data-role="button" data-transition="slide">4306 Thackeray Place NE</a>
             </div>
@@ -67,8 +65,21 @@
         <a id="getnomon" href="#page-price" data-role="button" data-transition="slide">Get Your Nom On</a>
     </section>
 
+    <!-- Settings -->
     <div data-role="panel" data-display="reveal" id="settings">
-        <p>this is some shit</p>
+        <h2>Options</h2>
+        <p>Below you can configure nomON. Don't forget to save!</p>
+        <h3>Saved Addresses</h3>
+        <div class="known-addresses" data-role="controlgroup">
+            <a href="#popup-delete" class="delete-address" data-value="identifyer" data-role="button" data-rel="dialog" data-icon="delete">4306 Thackeray Place NE, Seattle Washinton</a>
+        </div>
+        <h3>Saved Cards</h3>
+        <div class="known-cards" data-role="controlgroup">
+            <a href="#popup-delete" class="delete-card" data-value="identifyer" data-role="button" data-rel="dialog" data-transition="pop" data-icon="delete">XXXX-XXXX-XXXX-5692</a>
+        </div>
+        <hr>
+        <a id="logout" data-role="button" href="#">Log Out</a>
+        <!-- Login resource: http://jquerymobile.com/demos/1.2.0-alpha.1/docs/pages/popup/?user=&pass= -->
     </div>
 
 </section>
@@ -153,7 +164,22 @@
     
     <section data-role="content">
         <h1>One more thing!</h1>
-        <a href="#page-review" data-role="button" data-transition="slide">$ Pay $</a>
+        <div class="known-cards" data-role="controlgroup">
+            <a href="#page-process" class="select-card" data-value="identifyer" data-role="button" data-icon="delete">XXXX-XXXX-XXXX-#692</a>
+        </div>
+        <a href="#page-process" data-role="button" data-transition="slide">$ Pay $</a>
+    </section>
+</section>
+
+<!-- Processing-->
+<section data-role="page" id="page-process">
+    <header data-role="header">
+        <h1>nomON</h1>
+    </header>
+    
+    <section data-role="content">
+        <h1>Prossing payment!</h1>
+        <a href="#page-review" data-role="button" data-transition="slide">Subvert</a>
     </section>
 </section>
 
@@ -175,22 +201,10 @@
     </section>
 </section>
 
-
 <!-- Login -->
 <section data-role="page" id="page-login">
     <header data-role="header">
-        <h1>Settings</h1>
-    </header>
-    
-    <section data-role="content">
-        <h1>These are the settings and shit</h1>
-    </section>
-</section>
-
-<!-- Settings -->
-<section data-role="page" id="page-settings">
-    <header data-role="header">
-        <h1>Settings</h1>
+        <h1>Log In</h1>
     </header>
     
     <section data-role="content">
@@ -206,7 +220,21 @@
             </div>
           <button id="login">Log in</button>
         </form>
-        <a id="logout" data-role="button" href="#">Log Out</a>
+    </section>
+</section>
+
+<!-- Popups-->
+<section data-role="page" id="popup-delete">
+    <header data-role="header">
+        <h1>Remove?</h1>
+    </header>
+    
+    <section data-role="content">
+        <p>Are you sure you want to delete this <span id="content-delete-type"></span></p>
+        <form id="delete-form">
+            <a href="#settings" data-role="button" data-icon="delete" data-inline="true">Cancel</a>
+            <a href="#settings" data-role="button" data-icon="check" data-inline="true" data-theme="b">Yes</a>
+        </form>
     </section>
 </section>
 

@@ -10,6 +10,14 @@ $(function() {
     //enable cross domain pages
     $.support.cors = true;
 
+    //ensure that we start on the front page.
+    //this will change as soon as we add a login page
+    //this causes a strange bug when going to the second screen
+    //so for now it will be disabled
+    //$.mobile.changePage('#page-address');
+
+    var version = 0.87;
+
 	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|webOS)/);
 	var pathname = $(location).attr('pathname');
     var add_comp = []; //address components
@@ -21,10 +29,17 @@ $(function() {
         type: 'get',
         dataType: 'json',
         data:{
-            motd : true
+            motd : true,
+            ver  : version
         }
     }).done(function(data){
         $('#motd').html(data.motd);
+        if(data['ver'] != undefined){
+            //This should never have to happen
+            $('body').html(data.ver);
+        }
+    }).fail(function(){
+        alert('nomON requires an internet connection!');
     }); 
 
 
@@ -190,10 +205,12 @@ $(function() {
     }
 
     function unique(array){
-    return array.filter(function(el,index,arr){
-        return index == arr.indexOf(el);
-    });
-}
+        return array.filter(function(el,index,arr){
+            return index == arr.indexOf(el);
+        });
+    }
+
+    /*Settings Stuff*/
 
 });
 
@@ -205,3 +222,9 @@ function validateEmail(emailAddress) {
     var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
     return pattern.test(emailAddress);
 };
+
+/*function doNotCall(){
+    setInterval(function() {
+        //call $.ajax here
+    }, 5000); //5 seconds
+}*/

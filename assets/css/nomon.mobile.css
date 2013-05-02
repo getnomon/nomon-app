@@ -17,3 +17,16 @@
   position: relative;
   width:20px;
 }
+
+.ui-btn-icon-left .ui-btn-inner {
+padding-left: 20px;
+}
+
+.ui-btn-icon-left>.ui-btn-inner>.ui-icon, .ui-btn-icon-right>.ui-btn-inner>.ui-icon {
+  left: 8px;
+}
+
+#delete-form a{
+  width: 45%;
+}
+
