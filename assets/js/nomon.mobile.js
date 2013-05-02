@@ -12,7 +12,7 @@ $(function() {
     var add_comp = []; //address components
 	//Capture click/taps
 
-    $('#getnomon').on('click', function(){
+    $('#getnomon, .select-address').on('click', function(){
         if($('#address').val() == ""){
             alert('Please enter your address');
             return false;
