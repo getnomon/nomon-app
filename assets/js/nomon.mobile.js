@@ -15,8 +15,20 @@ $(function() {
     var add_comp = []; //address components
 	//Capture click/taps
 
-    //$.mobile.changePage("#page-address");
+    //Get the message of the day :)
+    $.ajax(api('r'), {
+        crpssDomain: true,
+        type: 'get',
+        dataType: 'json',
+        data:{
+            motd : true
+        }
+    }).done(function(data){
+        console.log(data);
+    }); 
 
+
+    //$.mobile.changePage("#page-address");
     $('#getnomon, .select-address').on('click', function(){
         if($(this).attr('id') == "getnomon" && $('#address').val() == ""){
             alert('Please enter your address');
@@ -61,7 +73,6 @@ $(function() {
                     /*begin jank type population*/
                     types = [];
                     $.each(result, function(index, rst){
-                        console.log(index);
                         if(!(typeof rst.cu === 'undefined')){
                             types.push(rst.cu[0]);
                         }
@@ -74,10 +85,10 @@ $(function() {
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                        )/*.trigger("create")*/; /*might want to call */
+                        ).trigger("create"); /*might want to call */
                     });
                     //$('#rst-types').trigger("create");
-                    $('#rst-types-fieldset').collapsibleset('refresh');
+                    //$('#restrictions').collapsibleset('refresh');
 
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];

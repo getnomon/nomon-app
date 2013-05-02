@@ -46,7 +46,9 @@
         <a href="#settings" data-icon="gear" class="ui-btn-left">Options</a>
     </div>
     <section data-role="content">
-        <p class="lead">We've got <span id="nom-count">##</span> happy Nommers so far...</p>
+        <div id="motd">
+            <p class="lead">We've got <span id="nom-count">##</span> happy Nommers so far...</p>
+        </div>
         <!-- IF an address exists -->
             <h3>Choose an address</h3>
             <div id="known-addresses" data-role="controlgroup">
@@ -59,7 +61,7 @@
         <!-- ENDIF -->
         <input data-inline="true" placeholder="New Address..." id="address" type="text">
         <div data-inline="true" id="location">
-        <img id="geo-icon" src="/assets/img/geo.png">
+        <img id="geo-icon" src="assets/img/geo.png">
         </div>
         </div>
         <a id="getnomon" href="#page-price" data-role="button" data-transition="slide">Get Your Nom On</a>
@@ -98,8 +100,8 @@
         <p class="lead">We've got you covered<small>*</small></p> 
 
         <!--<a href="#page-pay" data-role="button" data-transition="slide">I'll eat anything.</a>-->
-        <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
-            <div data-role="collapsible" id="restrictions">
+        <div data-role="collapsible-set" id="restrictions" data-theme="c" data-content-theme="d">
+            <div data-role="collapsible">
                 <h3>Keep in mind...</h3>
                 <fieldset data-role="controlgroup">
                     <label><h4>I am a</h4></label>
@@ -132,10 +134,9 @@
                     </label>
                 </fieldset>
             </div>
-            <div id="rst-types-fieldset" data-role="collapsible-set">
+            <div id="rst-types-fieldset" data-role="collapsible">
                 <h3>I'm feeling picky</h3>
-                <fieldset data-role="controlgroup" id="rst-types">
-                </fieldset>
+                <fieldset data-role="controlgroup" id="rst-types"></fieldset>
             </div>
         </div>        
         <a href="#page-pay" data-role="button" data-transition="slide">Let's do it!</a>
@@ -167,9 +168,9 @@
         <h1>Thanks!</h1>
         <h2>Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong></h2>
         <div id="review" data-role="controlgroup">
-            <a href="#page-allergies" data-value="2" data-role="button">Loved it!</a>
-            <a href="#page-allergies" data-value="1" data-role="button">Meh.</a>
-            <a href="#page-allergies" data-value="0" data-role="button">Never again :(</a>
+            <a href="#" data-value="2" data-role="button">Loved it!</a>
+            <a href="#" data-value="1" data-role="button">Meh.</a>
+            <a href="#" data-value="0" data-role="button">Never again :(</a>
         </div>
     </section>
 </section>
