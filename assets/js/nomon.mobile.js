@@ -101,7 +101,8 @@ $(function() {
                     $.each(unique_types, function(index, type){
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
-                            {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
+                            {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", 
+                                "value":type, checked:"true", "data-theme": 'd'}))
                         ).trigger("create"); /*might want to call */
                     });
                     //$('#rst-types').trigger("create");

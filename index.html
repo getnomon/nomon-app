@@ -90,6 +90,7 @@
 
 <!-- Price Point Selection-->
 <section data-role="page" id="page-price" data-add-back-btn="true"> 
+    <div data-role="header"></div>
     <section data-role="content">
         <h1>Pick your price!</h1>
         <div id="pricepoint" data-role="controlgroup">
@@ -102,12 +103,13 @@
 
 <!-- Allergies + Requests -->
 <section data-role="page" id="page-allergies" data-add-back-btn="true">
+    <div data-role="header"></div>
     <section data-role="content">
         <h1>Allergies? Special Requests?</h1>
         <p class="lead">We've got you covered<small>*</small></p> 
 
         <!--<a href="#page-pay" data-role="button" data-transition="slide">I'll eat anything.</a>-->
-        <div data-role="collapsible-set" id="restrictions" data-theme="c" data-content-theme="d">
+        <div data-role="collapsible-set" id="restrictions" data-content-theme="d">
             <div data-role="collapsible">
                 <h3>Keep in mind...</h3>
                 <fieldset data-role="controlgroup">
@@ -144,8 +146,8 @@
             <div id="rst-types-fieldset" data-role="collapsible">
                 <h3>I'm feeling picky</h3>
                 <fieldset data-role="controlgroup" id="rst-types"></fieldset>
-            </div>
-        </div>        
+            </div>     
+        <div>  
         <a href="#page-pay" data-role="button" data-transition="slide">Let's do it!</a>
 
       <p style="margin-top:30px; line-height: 1em;"><small style="font-size:80%;">*nomON and ordr.in do not guarantee that the meal you receive will match your allergy preferences. The nomON algorithm selects and avoids items according to the ingredients that each restaurant lists on its menu. Thus, if a restaurant does not disclose the full ingredient list, there is no guarantee that your order will not include things you specified. We suggest only selecting certain categories of restaurants that will serve your needs, thoroughly inspecting foods when received, or refraining from ordering if your allergies are severe.</small></p>
@@ -153,10 +155,11 @@
 </section>
 
 <!-- Payment-->
-<section data-role="page" id="page-pay" data-add-back-btn="true">    
+<section data-role="page" id="page-pay" data-add-back-btn="true">   
+    <div data-role="header"></div> 
     <section data-role="content">
-        <h2>One more thing!</h2>
-        <h3>Chose a card to pay with</h3>
+        <h1>One more thing!</h1>
+        <h2>Chose a card to pay with</h2>
         <div class="known-cards" data-role="controlgroup">
             <a href="#page-process" class="select-card" data-value="identifyer" data-role="button" data-icon="star">XXXX-XXXX-XXXX-5692</a>
         </div>
@@ -168,10 +171,7 @@
 
 <!-- Processing-->
 <section data-role="page" id="page-process">
-    <header data-role="header">
-        <h1>nomON</h1>
-    </header>
-    
+    <div data-role="header"></div>
     <section data-role="content">
         <h1>Prossing payment!</h1>
         <a href="#page-review" data-role="button" data-transition="slide">Subvert</a>
@@ -186,7 +186,7 @@
     
     <section data-role="content">
         <h1>Thanks!</h1>
-        <h2>Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong></h2>
+        <h2 class="text-center">Did you like <strong><u id="restaurant">{{Restaurant Name}}}</u></strong>?</h2>
         <div id="review" data-role="controlgroup">
             <a href="#" data-value="2" data-role="button">Loved it!</a>
             <a href="#" data-value="1" data-role="button">Meh.</a>
