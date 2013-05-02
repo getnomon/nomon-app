@@ -74,10 +74,10 @@ $(function() {
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                        )/*.trigger("create")*/; /*might want to call */
+                        ).trigger("create"); /*might want to call */
                     });
                     //$('#rst-types').trigger("create");
-                    //$('#rst-type-fieldset').collapsibleset('refresh');
+                    $('#rst-type-fieldset').collapsibleset('refresh');
 
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
@@ -96,10 +96,6 @@ $(function() {
         }
 
     	//return false;
-    });
-
-    $('#rst-types-fieldset').on('click', function(){
-         $('#rst-types-fieldset').collapsibleset('refresh');
     });
 
     $('#getnomon').on('click', function(){
