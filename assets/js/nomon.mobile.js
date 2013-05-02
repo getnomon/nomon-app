@@ -23,14 +23,15 @@ $(function() {
     var add_comp = []; //address components
 	//Capture click/taps
 
-    //Get the message of the day :)
+    //Get the message of the day && get session :)
     $.ajax(api('r'), {
         crpssDomain: true,
         type: 'get',
         dataType: 'json',
         data:{
-            motd : true,
-            ver  : version
+            motd    : true,
+            session : true,
+            ver     : version
         }
     }).done(function(data){
         $('#motd').html(data.motd);
@@ -38,10 +39,16 @@ $(function() {
             //This should never have to happen
             $('body').html(data.ver);
         }
+        if(!data.auth){
+            console.log('User is not authenticated, we should rediredt');
+        }else{
+            console.log('User is authenticated!');
+        }
     }).fail(function(){
         alert('nomON requires an internet connection!');
     }); 
 
+    //if the session doesn't exist
 
     //$.mobile.changePage("#page-address");
     $('#getnomon, .select-address').on('click', function(){
@@ -136,6 +143,21 @@ $(function() {
         //top menu (which ties in with button collor). This menu would also let
         //the user navagete back and forth on the pages.
 
+    });
+
+    $('#logout').on('click', function(){
+        $.ajax(api('r'), {
+            type : 'get',
+            dataType: "json",
+            data: {
+                logout  : true
+            }
+        }).done(function(result){
+            //logout successful
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            alert('nomON needs internet connection to log out...');
+        });
+        //refresh or something
     });
 
     $('#login-form').submit(function(){
