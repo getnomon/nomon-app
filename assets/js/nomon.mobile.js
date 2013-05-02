@@ -76,8 +76,9 @@ $(function() {
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                         ); /*might want to call .trigger("create")*/
                     });
-                    //$('#rst-types').trigger("create")
-                    $('#rst-type-fieldset').collapsibleset('refresh');
+                    $('#rst-type-fieldset').trigger("create");
+                    //$('#rst-type-fieldset').collapsibleset('refresh');
+
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
                     console.log('Random restaurant: '+randomRestaurant.na);
