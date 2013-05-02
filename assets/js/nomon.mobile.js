@@ -63,7 +63,7 @@ $(function() {
                     });
                     unique_types = unique(types);
                     unique_types.reverse();
-                    
+
                     $('#rst-types').html('');
                     $.each(unique_types, function(index, type){
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
@@ -71,7 +71,8 @@ $(function() {
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
                         );
                     });
-                    $('#rst-types').trigger("create");
+                    $('#rst-types').trigger("create")
+                    //$('#rst-type-fieldset').collapsibleset('refresh');
                     /*end jank type population*/
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
                     console.log('Random restaurant: '+randomRestaurant.na);
