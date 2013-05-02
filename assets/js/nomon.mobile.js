@@ -68,6 +68,8 @@ $(function() {
                 });
                 console.log(add_comp);
                 //make delivery request based on address
+
+                toggleLoad(true);
                 $.ajax(api('r'), {
                     crossDomain: true,
                     type : 'POST',
@@ -109,6 +111,7 @@ $(function() {
                     randomRestaurant = result[Math.floor(Math.random()*result.length)];
                     console.log('Random restaurant: '+randomRestaurant.na);
                     $('#restaurant').text(randomRestaurant.na);
+                    toggleLoad(false);
                 }).fail(function(jqXHR, textStatus, errorThrown){
                     alert('Could not find any restaurants for this location');
                     console.log(jqXHR);
@@ -208,6 +211,20 @@ $(function() {
         return array.filter(function(el,index,arr){
             return index == arr.indexOf(el);
         });
+    }
+
+    //True to enable, false to disable
+    function toggleLoad(toggle){
+        if(toggle){
+            $.mobile.loading('show', {
+                text: '',
+                textVisible: true,
+                theme: 'z',
+                html: ""
+            });
+        }else{
+            $.mobile.loading('hide');
+        }
     }
 
     /*Settings Stuff*/

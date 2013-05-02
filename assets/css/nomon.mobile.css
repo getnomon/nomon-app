@@ -30,3 +30,17 @@ padding-left: 20px;
   width: 45%;
 }
 
+h1.title-front{
+  font-size: 82px;
+  margin: auto;
+}
+
+.banner{
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+}
+
+.banner img{
+  max-width: 100%;
+}
