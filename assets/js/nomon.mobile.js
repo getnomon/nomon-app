@@ -24,7 +24,7 @@ $(function() {
             motd : true
         }
     }).done(function(data){
-        console.log(data);
+        $('#motd').html(data.motd);
     }); 
 
 
