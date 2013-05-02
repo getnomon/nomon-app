@@ -7,10 +7,15 @@
 */
 
 $(function() {
+    //enable cross domain pages
+    $.support.cors = tue;
+
 	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|webOS)/);
 	var pathname = $(location).attr('pathname');
     var add_comp = []; //address components
 	//Capture click/taps
+
+    //$.mobile.changePage("#page-address");
 
     $('#getnomon, .select-address').on('click', function(){
         if($(this).attr('id') == "getnomon" && $('#address').val() == ""){
@@ -69,7 +74,7 @@ $(function() {
                         $('#rst-types').append($('<label>', {class:"checkbox", text:type})
                             .prepend($('<input>', 
                             {"type":"checkbox", id:"Rcheckbox"+index, name:"filter", "value":type, checked:"true"}))
-                        );
+                        ); /*might want to call .trigger("create")*/
                     });
                     //$('#rst-types').trigger("create")
                     $('#rst-type-fieldset').collapsibleset('refresh');
