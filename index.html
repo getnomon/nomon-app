@@ -96,36 +96,39 @@
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
             <div data-role="collapsible" id="restrictions">
                 <h3>Keep in mind...</h3>
-                <label><h4>I am a</h4></label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox1" name="restrictions" value="Vegetarian"> Vegetarian
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox3" name="restrictions" value="Vegan"> Vegan
-                </label>
-                <label><h4>I am allergic to</h4></label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox2" name="restrictions" value="Gluten"> Gluten
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox4" name="restrictions" value="Peanuts"> Peanuts
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox5" name="restrictions" value="Dairy"> Dairy
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox6" name="restrictions" value="Nut"> Nuts
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox7" name="restrictions" value="Fish/Shellfish"> Fish/Shellfish
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" id="Checkbox8" name="restrictions" value="Egg"> Eggs
-                </label>
-                <a href="#page-pay" class="btn btn-danger btn-large btn-block btn-primary" style="margin-top:10px">Feed me!</a>
+                <fieldset data-role="controlgroup">
+                    <label><h4>I am a</h4></label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox1" name="restrictions" value="Vegetarian"> Vegetarian
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox3" name="restrictions" value="Vegan"> Vegan
+                    </label>
+                    <label><h4>I am allergic to</h4></label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox2" name="restrictions" value="Gluten"> Gluten
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox4" name="restrictions" value="Peanuts"> Peanuts
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox5" name="restrictions" value="Dairy"> Dairy
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox6" name="restrictions" value="Nut"> Nuts
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox7" name="restrictions" value="Fish/Shellfish"> Fish/Shellfish
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" id="Checkbox8" name="restrictions" value="Egg"> Eggs
+                    </label>
+                </fieldset>
             </div>
-            <div data-role="collapsible" id="rst-types">
+            <div data-role="collapsible">
                 <h3>I'm feeling picky</h3>
+                <fieldset data-role="controlgroup" id="rst-types">
+                </fieldset>
             </div>
         </div>        
         <a href="#page-pay" data-role="button" data-transition="slide">Let's do it!</a>
