@@ -35,12 +35,11 @@ $(function() {
         }
     }).done(function(data){
         $('#motd').html(data.motd);
-        if(data['ver'] != undefined){
-            //This should never have to happen
-            $('body').html(data.ver);
-        }
+        //This should never have to happen
+        if(data['ver'] != undefined){$('body').html(data.ver);}
         if(!data.auth){
             console.log('User is not authenticated, we should rediredt');
+            $.mobile.changePage('#page-login');
         }else{
             console.log('User is authenticated!');
         }
