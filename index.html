@@ -51,7 +51,7 @@
             <h3>Choose an address</h3>
             <div id="known-addresses" data-role="controlgroup">
                 <!-- Some kind of "loading" feedback -->
-                <a href="#page-price" class="select-address" data-value="0" data-role="button">4306 Thackeray Place NE</a>
+                <a href="#page-price" class="select-address" data-value="0" data-role="button" data-transition="slide">4306 Thackeray Place NE</a>
             </div>
             <h3>Or enter a new one</h3>
             <!-- ELSE 
@@ -75,9 +75,9 @@
     <section data-role="content">
         <h1>Pick your price!</h1>
         <div id="pricepoint" data-role="controlgroup">
-            <a href="#page-allergies" data-value="15" data-role="button">$15 - Hungry</a>
-            <a href="#page-allergies" data-value="20" data-role="button">$20 - Really Hungry</a>
-            <a href="#page-allergies" data-value="25" data-role="button">$25 - I Could Eat a Horse</a>
+            <a href="#page-allergies" data-value="15" data-role="button" data-transition="slide">$15 - Hungry</a>
+            <a href="#page-allergies" data-value="20" data-role="button" data-transition="slide">$20 - Really Hungry</a>
+            <a href="#page-allergies" data-value="25" data-role="button" data-transition="slide">$25 - I Could Eat a Horse</a>
         </div>
     </section>
 </section>
@@ -188,7 +188,6 @@
     </header>
     
     <section data-role="content">
-        <a class="btn btn-danger btn-large btn-block btn-primary" href="/thanks">Log Out</a>
         <hr>
         <form id="login-form">
             <div data-role="fieldcontain">
@@ -201,6 +200,7 @@
             </div>
           <button id="login">Log in</button>
         </form>
+        <a id="logout" data-role="button" href="#">Log Out</a>
     </section>
 </section>
 
