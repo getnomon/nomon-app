@@ -26,9 +26,9 @@ $(function() {
                 console.log(add_comp);
                 //make delivery request based on address
                 $.ajax(api('r'), {
-                    type : 'POST',
                     crossDomain: true,
-                    dataType: "jsonp",
+                    type : 'POST',
+                    dataType: "json",
                     data: {
                         func : 'dl',
                         addr : add_comp.street_number+" "+add_comp.route,
