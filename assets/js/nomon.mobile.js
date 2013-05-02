@@ -98,8 +98,8 @@ $(function() {
     	//return false;
     });
 
-    $('rst-types-fieldset').on('click', function(){
-         $('#rst-type-fieldset').collapsibleset('refresh');
+    $('#rst-types-fieldset').on('click', function(){
+         $('#rst-types').collapsibleset('refresh');
     });
 
     $('#getnomon').on('click', function(){
