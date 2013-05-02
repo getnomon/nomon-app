@@ -21,6 +21,7 @@ $(function() {
             //know it's valid. But for now let's just revalidate to keep
             //it simple
             //TODO: remove redundant validation on known address
+            console.log($(this));
             console.log($(this).text());
             address = "";
             if($(this).hasClass('select-adderss')){
@@ -32,7 +33,7 @@ $(function() {
 
             $.get(geoValidate(address)).done(function(data) { 
                 //got data, now what?
-                //console.log(data.results);
+                console.log(data.results);
                 $.each(data.results[0].address_components, function(index, addr){
                     add_comp[addr.types[0]] = addr.short_name;
                 });
