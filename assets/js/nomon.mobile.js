@@ -174,7 +174,7 @@ $(function() {
             console.log(result);
             console.log(result.error.message);
             if(result.error != undefined){
-                //user is auth
+                //incorrect 
                 alert('Incorrect username and/or password');
             }else{
                 console.log('User has logged in');
