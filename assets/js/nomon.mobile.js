@@ -11,6 +11,12 @@
 $(function() {
     //enable cross domain pages
     $.support.cors = true;
+    var SESSION = localStorage.getItem("session");
+    var UUID = localStorage.getItem('uuid');
+    if(UUID == undefined){
+        UUID = guid();
+        localStorage.setItem("uuid", UUID);
+    }
 
     //ensure that we start on the front page.
     //this will change as soon as we add a login page
@@ -20,7 +26,6 @@ $(function() {
 
     var version = 0.87;
 
-    var SESSION = localStorage.getItem("session");
 
 	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|webOS)/);
 	var pathname = $(location).attr('pathname');
@@ -28,13 +33,14 @@ $(function() {
 	//Capture click/taps
 
     //Get the message of the day && get session :)
-    console.log("Session: " + SESSION);
+    console.log("sid: " + SESSION + " | uid: " + UUID);
     $.ajax(api('u'), {
         crpssDomain: true,
         type: 'post',
         dataType: 'json',
         data:{
             session_id  : SESSION,
+            uuid        : UUID,
             motd        : true,
             get_session : true,
             useragent   : navigator.userAgent,
@@ -44,8 +50,9 @@ $(function() {
         $('#motd').html(data.motd);
         //This should never have to happen
         if(data['ver'] != undefined){$('body').html(data.ver);}
-
         console.log(data); //should give us back a session ID (to store in a cookie?)
+
+        //TODO: Get their addresses
 
         if(!data.auth){
             console.log('User is not authenticated, we should rediredt');
@@ -91,7 +98,6 @@ $(function() {
                     type : 'POST',
                     dataType: "json",
                     data: {
-                        session_id  : SESSION,
                         func : 'dl',
                         addr : add_comp.street_number+" "+add_comp.route,
                         city : add_comp.locality,
@@ -157,15 +163,20 @@ $(function() {
 
     $('#logout').on('click', function(){
         $.ajax(api('r'), {
+            crossDomain: true,
             type : 'get',
             dataType: "json",
             data: {
                 session_id  : SESSION,
+                uuid        : UUID,
                 logout  : true
             }
         }).done(function(result){
-            //logout successful
-            localStorage.session = 0;
+            //unset our session
+            localStorage.setItem("session", undefined);
+            localStorage.setItem("uuid", UUID);
+            alert('Logout successful');
+            $.mobile.changePage($('#page-login'));
         }).fail(function(jqXHR, textStatus, errorThrown){
             alert('nomON needs internet connection to log out...');
         });
@@ -176,10 +187,11 @@ $(function() {
         //Pass info to server and get session!
         //Authenticate user
         $.ajax(api('u'), {
+            crossDomain: true,
             type : 'post',
             dataType: "json",
             data: {
-                start_session : SESSION,
+                start_session : UUID,
                 func  : 'gacc',
                 email : $('#inputEmail').val(),
                 pass  : $('#inputPassword').val()
@@ -190,6 +202,7 @@ $(function() {
                 //incorrect 
                 alert('Incorrect username and/or password');
             }else{
+                //get our session id back
                 SESSION = result.sid;
                 localStorage.setItem("session", SESSION);
                 console.log('User has logged in with sid: ' + SESSION);
@@ -215,7 +228,8 @@ $(function() {
             dataType: "json",
             data: {
                 func  : 'gacc',
-                session_id : SESSION
+                session_id : SESSION,
+                uuid        : UUID
             }
         }).done(function(result){
             console.log(result);
@@ -223,13 +237,17 @@ $(function() {
                 //incorrect 
                 alert('Incorrect username and/or password');
             }else{
-                console.log(result);
+                console.log('Shit checks out, you are auth and good to go!');
             }
         }).fail(function(jqXHR, textStatus, errorThrown){
             console.log(errorThrown);
         });
         return false;
     });
+
+    function getKnownAddresses(){
+
+    }
 
     //Genaric Cross app/web code
 
@@ -304,6 +322,12 @@ function validateEmail(emailAddress) {
     return pattern.test(emailAddress);
 };
 
+function guid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+}
 /*function doNotCall(){
     setInterval(function() {
         //call $.ajax here
