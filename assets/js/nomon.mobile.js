@@ -6,6 +6,8 @@
 # REQUIREMENTS: Extreme hunger!
 */
 
+
+
 $(function() {
     //enable cross domain pages
     $.support.cors = true;
@@ -18,30 +20,38 @@ $(function() {
 
     var version = 0.87;
 
+    var SESSION = localStorage.getItem("session");
+
 	var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|webOS)/);
 	var pathname = $(location).attr('pathname');
     var add_comp = []; //address components
 	//Capture click/taps
 
     //Get the message of the day && get session :)
-    $.ajax(api('r'), {
+    console.log("Session: " + SESSION);
+    $.ajax(api('u'), {
         crpssDomain: true,
-        type: 'get',
+        type: 'post',
         dataType: 'json',
         data:{
-            motd    : true,
-            session : true,
-            ver     : version
+            session_id  : SESSION,
+            motd        : true,
+            get_session : true,
+            useragent   : navigator.userAgent,
+            ver         : version
         }
     }).done(function(data){
         $('#motd').html(data.motd);
         //This should never have to happen
         if(data['ver'] != undefined){$('body').html(data.ver);}
+
+        console.log(data); //should give us back a session ID (to store in a cookie?)
+
         if(!data.auth){
             console.log('User is not authenticated, we should rediredt');
-            $.mobile.changePage('#page-login');
+            $.mobile.changePage($('#page-login'));
         }else{
-            console.log('User is authenticated!');
+            console.log('User is already authenticated!');
         }
     }).fail(function(){
         alert('nomON requires an internet connection!');
@@ -81,6 +91,7 @@ $(function() {
                     type : 'POST',
                     dataType: "json",
                     data: {
+                        session_id  : SESSION,
                         func : 'dl',
                         addr : add_comp.street_number+" "+add_comp.route,
                         city : add_comp.locality,
@@ -149,10 +160,12 @@ $(function() {
             type : 'get',
             dataType: "json",
             data: {
+                session_id  : SESSION,
                 logout  : true
             }
         }).done(function(result){
             //logout successful
+            localStorage.session = 0;
         }).fail(function(jqXHR, textStatus, errorThrown){
             alert('nomON needs internet connection to log out...');
         });
@@ -166,18 +179,21 @@ $(function() {
             type : 'post',
             dataType: "json",
             data: {
+                start_session : SESSION,
                 func  : 'gacc',
                 email : $('#inputEmail').val(),
                 pass  : $('#inputPassword').val()
             }
         }).done(function(result){
             console.log(result);
-            console.log(result.error.message);
             if(result.error != undefined){
                 //incorrect 
                 alert('Incorrect username and/or password');
             }else{
-                console.log('User has logged in');
+                SESSION = result.sid;
+                localStorage.setItem("session", SESSION);
+                console.log('User has logged in with sid: ' + SESSION);
+                $.mobile.changePage($('#page-address'));
             }
         }).fail(function(jqXHR, textStatus, errorThrown){
             console.log(errorThrown);
@@ -187,6 +203,30 @@ $(function() {
             }else{
                 alert('Check your internet connection');
             }
+        });
+        return false;
+    });
+
+    $('#get-hash').on('click', function(){
+        //Pass info to server and get session!
+        //Authenticate user
+        $.ajax(api('u'), {
+            type : 'post',
+            dataType: "json",
+            data: {
+                func  : 'gacc',
+                session_id : SESSION
+            }
+        }).done(function(result){
+            console.log(result);
+            if(result.error != undefined){
+                //incorrect 
+                alert('Incorrect username and/or password');
+            }else{
+                console.log(result);
+            }
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            console.log(errorThrown);
         });
         return false;
     });
