@@ -53,7 +53,7 @@ $(function() {
         console.log(data); //should give us back a session ID (to store in a cookie?)
 
 
-        if(!data.auth){
+        if(!data.auth || data.error){
             console.log('User is not authenticated, we should rediredt');
             $.mobile.changePage($('#page-login'));
         }else{
@@ -163,24 +163,7 @@ $(function() {
     });
 
     $('#logout').on('click', function(){
-        $.ajax(api('r'), {
-            crossDomain: true,
-            type : 'get',
-            dataType: "json",
-            data: {
-                session_id  : SESSION,
-                uuid        : UUID,
-                logout  : true
-            }
-        }).done(function(result){
-            //unset our session
-            localStorage.setItem("session", undefined);
-            localStorage.setItem("uuid", UUID);
-            alert('Logout successful');
-            $.mobile.changePage($('#page-login'));
-        }).fail(function(jqXHR, textStatus, errorThrown){
-            alert('nomON needs internet connection to log out...');
-        });
+        logout();
         //refresh or something
     });
 
@@ -247,6 +230,27 @@ $(function() {
         return false;
     });
 
+
+    function logout(){
+        $.ajax(api('r'), {
+            crossDomain: true,
+            type : 'get',
+            dataType: "json",
+            data: {
+                session_id  : SESSION,
+                uuid        : UUID,
+                logout  : true
+            }
+        }).done(function(result){
+            //unset our session
+            localStorage.setItem("session", undefined);
+            localStorage.setItem("uuid", UUID);
+            alert('Logout successful');
+            $.mobile.changePage($('#page-login'));
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            alert('nomON needs internet connection to log out...');
+        });
+    }
     //accepts the id of a controll group
     function getKnownAddresses(target){
         $.ajax(api('u'), {
@@ -261,7 +265,7 @@ $(function() {
         }).done(function(result){
             console.log('got address');
             console.log(result);
-            if(result.error != undefined){
+            if(result.error != undefined && result.addr != undefined){
                 //incorrect 
                 alert("Couldn't find any known addresses :'( Please Contact support@getnomon.com");
             }else{
