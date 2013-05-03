@@ -172,10 +172,12 @@ $(function() {
             }
         }).done(function(result){
             console.log(result);
-            if(result.error != null){
+            console.log(result.error.message);
+            if(result.error != undefined){
                 //user is auth
+                alert('Incorrect username and/or password');
             }else{
-                //boo boo fail
+                console.log('User has logged in');
             }
         }).fail(function(jqXHR, textStatus, errorThrown){
             console.log(errorThrown);

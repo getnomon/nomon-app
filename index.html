@@ -42,6 +42,7 @@
 <!-- Address Page -->
 <section data-role="page" id="page-address">  
     <div data-role="header">
+        <!-- Could say login when user is not auth and then have the login in the panel-->
         <a href="#settings" data-icon="gear" class="ui-btn-left">Options</a>
     </div>
     <section data-role="content" id="front-page">
@@ -200,7 +201,7 @@
 <!-- Login -->
 <section data-role="page" id="page-login">
     <section data-role="content">
-        <hr>
+        <h1>Log in!</h1>
         <form id="login-form">
             <div data-role="fieldcontain">
                 <label for="textinput-fc">Username:</label>
@@ -212,6 +213,7 @@
             </div>
           <button id="login">Log in</button>
         </form>
+        <a href="https://getnomon.com/register" target="_blank" data-role="button">Register</a>
     </section>
 </section>
 
@@ -230,6 +232,9 @@
     </section>
 </section>
 
-
+<!-- Registration notes:
+After creating an account you MUST add an address, otherwise it wont save.
+Yes, this is strange. And yes, it did take a while to figure out
+-->
 </body>
 </html>
