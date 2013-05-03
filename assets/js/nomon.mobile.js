@@ -52,13 +52,14 @@ $(function() {
         if(data['ver'] != undefined){$('body').html(data.ver);}
         console.log(data); //should give us back a session ID (to store in a cookie?)
 
-        //TODO: Get their addresses
 
         if(!data.auth){
             console.log('User is not authenticated, we should rediredt');
             $.mobile.changePage($('#page-login'));
         }else{
             console.log('User is already authenticated!');
+            //TODO: Get their addresses
+            getKnownAddresses($('#address-front'));
         }
     }).fail(function(){
         alert('nomON requires an internet connection!');
@@ -206,6 +207,7 @@ $(function() {
                 SESSION = result.sid;
                 localStorage.setItem("session", SESSION);
                 console.log('User has logged in with sid: ' + SESSION);
+                getKnownAddresses($('#address-front')); //populate addresses
                 $.mobile.changePage($('#page-address'));
             }
         }).fail(function(jqXHR, textStatus, errorThrown){
@@ -227,8 +229,8 @@ $(function() {
             type : 'post',
             dataType: "json",
             data: {
-                func  : 'gacc',
-                session_id : SESSION,
+                func        : 'gacc',
+                session_id  : SESSION,
                 uuid        : UUID
             }
         }).done(function(result){
@@ -245,8 +247,31 @@ $(function() {
         return false;
     });
 
-    function getKnownAddresses(){
-
+    //accepts the id of a controll group
+    function getKnownAddresses(target){
+        $.ajax(api('u'), {
+            type : 'post',
+            dataType: "json",
+            data: {
+                func  : 'gaddr',
+                session_id : SESSION,
+                uuid        : UUID,
+                addrNick    : 'Home'
+            }
+        }).done(function(result){
+            console.log('got address');
+            console.log(result);
+            if(result.error != undefined){
+                //incorrect 
+                alert("Couldn't find any known addresses :'( Please Contact support@getnomon.com");
+            }else{
+                target.append($('<a>', {href:"#page-price", class:"select-address", text: result.addr,
+                    "data-value":"Home", "data-role":"button", "data-transition":"slide"})).trigger("create");
+            }
+            target.controlgroup("refresh");
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            console.log(errorThrown);
+        });
     }
 
     //Genaric Cross app/web code
