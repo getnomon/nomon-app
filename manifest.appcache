@@ -15,5 +15,5 @@ NETWORK:
 # Additional resources to cache
 CACHE:
 manifest.webapp
-lib/add2home.css
-lib/add2home.js
+#lib/add2home.css
+#lib/add2home.js
