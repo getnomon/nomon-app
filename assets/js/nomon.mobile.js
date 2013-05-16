@@ -163,7 +163,7 @@ $(function() {
     });
 
     $('#logout').on('click', function(){
-        logout();
+        logout(true);
         //refresh or something
     });
 
@@ -231,7 +231,7 @@ $(function() {
     });
 
 
-    function logout(){
+    function logout(print){
         $.ajax(api('r'), {
             crossDomain: true,
             type : 'get',
@@ -245,7 +245,9 @@ $(function() {
             //unset our session
             localStorage.setItem("session", undefined);
             localStorage.setItem("uuid", UUID);
-            alert('Logout successful');
+            if(print){
+                alert('Logout successful');
+            }
             $.mobile.changePage($('#page-login'));
         }).fail(function(jqXHR, textStatus, errorThrown){
             alert('nomON needs internet connection to log out...');
@@ -265,10 +267,10 @@ $(function() {
         }).done(function(result){
             console.log('got address');
             console.log(result);
-            if(result.error != undefined && result.addr != undefined){
+            if(result.error != undefined && result.error.type == 401){
                 //incorrect 
-                alert("Couldn't find any known addresses :'( Please Contact support@getnomon.com");
-            }else{
+                logout(false);
+            }else if(result.addr != undefined){
                 target.append($('<a>', {href:"#page-price", class:"select-address", text: result.addr,
                     "data-value":"Home", "data-role":"button", "data-transition":"slide"})).trigger("create");
             }
