@@ -63,6 +63,8 @@
     <!-- GENERAL PREFERENCES -->
         
     <!-- <preference name="phonegap-version" value="2.2.0" /> versione di phonegap usata, se non specificata usa quella di default (l'ultima disponibile) -->
+    <preference name="phonegap-version" value="2.7.0" />
+    
     <preference name="orientation" value="default" /> <!-- entrambe supportate -->
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" /> <!-- removes the bar high on iOS and Android -->
